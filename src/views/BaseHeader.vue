@@ -16,7 +16,7 @@
           <el-menu-item index="/tag/all">标签</el-menu-item>
           <el-menu-item index="/archives">文章归档</el-menu-item>
 
-          <el-col :span="4" :offset="4">
+          <el-col :span="4" :offset="4" v-if="user.account=='芝码小咚'">
             <el-menu-item index="/write"><i class="el-icon-edit"></i>写文章</el-menu-item>
           </el-col>
 
@@ -70,9 +70,10 @@
     computed: {
       user() {
         let login = this.$store.state.account.length != 0
+        let account = this.$store.state.account
         let avatar = this.$store.state.avatar
         return {
-          login, avatar
+          login, avatar, account
         }
       }
     },

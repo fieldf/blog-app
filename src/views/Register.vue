@@ -1,11 +1,11 @@
 <template>
-  <div id="register" v-title data-title="注册 - 码神之路">
+  <div id="register" v-title data-title="注册 - 芝码小咚">
     <!--<video preload="auto" class="me-video-player" autoplay="autoplay" loop="loop">
           <source src="../../static/vedio/sea.mp4" type="video/mp4">
       </video>-->
 
     <div class="me-login-box me-login-box-radius">
-      <h1>码神之路 注册</h1>
+      <h1>芝码小咚 注册</h1>
 
       <el-form ref="userForm" :model="userForm" :rules="rules">
         <el-form-item prop="account">
@@ -25,7 +25,7 @@
         </el-form-item>
       </el-form>
 
-  
+
 
     </div>
   </div>
@@ -54,7 +54,9 @@
           ],
           password: [
             {required: true, message: '请输入密码', trigger: 'blur'},
-            {max: 10, message: '不能大于10个字符', trigger: 'blur'}
+            {min: 10, message: '不能小于10个字符', trigger: 'blur'},
+            {max: 30, message: '不能大于30个字符', trigger: 'blur'}
+
           ]
         }
 

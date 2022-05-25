@@ -1,20 +1,9 @@
 <template>
   <div id="write" v-title :data-title="title">
     <el-container>
-      <base-header :simple=true>
-        <el-col :span="4" :offset="2">
-          <div class="me-write-info">写文章</div>
-        </el-col>
-        <el-col :span="4" :offset="6">
-          <div class="me-write-btn">
-            <el-button round @click="publishShow">发布</el-button>
-            <el-button round @click="cancel">取消</el-button>
-          </div>
-        </el-col>
-      </base-header>
-
       <el-container class="me-area me-write-box">
         <el-main class="me-write-main">
+          <el-button round @click="publishShow('articleForm')">确定</el-button>
           <div class="me-write-title">
             <el-input resize="none"
                       type="textarea"
@@ -57,7 +46,7 @@
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="publishVisible = false">取 消</el-button>
-          <el-button type="primary" @click="publish('articleForm')">发布</el-button>
+          <el-button type="primary" @click="edit('articleForm')">发布</el-button>
         </div>
       </el-dialog>
     </el-container>
@@ -67,7 +56,7 @@
 <script>
   import BaseHeader from '@/views/BaseHeader'
   import MarkdownEditor from '@/components/markdown/MarkdownEditor'
-  import {publishArticle, getArticleById} from '@/api/article'
+  import {editArticle,publishArticle, getArticleById} from '@/api/article'
   import {getAllCategorys} from '@/api/category'
   import {getAllTags} from '@/api/tag'
 
@@ -144,7 +133,7 @@
     },
     computed: {
       title (){
-        return '写文章 - 芝码小咚'
+        return '编辑文章 - 芝码小咚'
 		}
 	},
     methods: {
@@ -186,8 +175,7 @@
 
         this.publishVisible = true;
       },
-      publish(articleForm) {
-
+      edit(articleForm) {
         let that = this
 
         this.$refs[articleForm].validate((valid) => {
@@ -207,23 +195,22 @@
                 content: this.articleForm.editor.value,
                 contentHtml: this.articleForm.editor.ref.d_render
               }
-
             }
 
             this.publishVisible = false;
 
             let loading = this.$loading({
               lock: true,
-              text: '发布中，请稍后...'
+              text: '编辑中，请稍后...'
             })
 
-            publishArticle(article,this.$store.state.token).then((data) => {
+            editArticle(article,this.$store.state.token).then((data) => {
               if(data.success){
                 loading.close();
-                that.$message({message: '发布成功啦', type: 'success', showClose: true})
+                that.$message({message: '编辑成功啦', type: 'success', showClose: true})
                 that.$router.push({path: `/view/${data.data.id}`})
               }else{
-                that.$message({message: error, type: '发布文章失败:'+data.msg, showClose: true});
+                that.$message({message: error, type: '发布编辑失败:'+data.msg, showClose: true});
               }
 
             }).catch((error) => {

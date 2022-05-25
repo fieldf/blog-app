@@ -57,9 +57,9 @@
     computed: {
       title() {
         if(this.$route.params.type === 'tag'){
-          return `${this.ct.tagName} - 标签 - 码神之路`
+          return `${this.ct.tagName} - 标签 - 芝码小咚`
         }
-        return `${this.ct.categoryName} - 文章分类 - 码神之路`
+        return `${this.ct.categoryName} - 文章分类 - 芝码小咚`
       }
     },
     methods: {

@@ -1,9 +1,9 @@
 <template>
   <el-card>
-    <h1 class="me-author-name">码神之路</h1>
+    <h1 class="me-author-name">芝码小咚</h1>
     <div class="me-author-description">
-      <span><i class="el-icon-location-outline"></i> &nbsp;山西&太原</span>
-      <span><i class="me-icon-job"></i> &nbsp;java技术专家</span>
+      <span><i class="el-icon-location-outline"></i> &nbsp;北京</span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span><i class="me-icon-job"></i> &nbsp;java学徒</span>
     </div>
     <div class="me-author-tool">
       <i @click="showTool(qq)" :title="qq.title" class="iconfont icon-qq"></i>

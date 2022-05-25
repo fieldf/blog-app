@@ -4,7 +4,8 @@
 
       <el-aside class="me-area">
         <ul class="me-month-list">
-          <li v-for="a in archives" :key="a.year + a.month" class="me-month-item">
+<!--          <li v-for="a in archives" :key="a.year + a.month" class="me-month-item">-->
+          <li v-for="(a,index) in archives" :key="index" class="me-month-item">
             <el-badge :value="a.count">
               <el-button @click="changeArchive(a.year, a.month)" size="small">{{a.year +'年' + a.month + '月'}}
               </el-button>
@@ -59,7 +60,7 @@
     },
     computed: {
       title (){
-        return this.currentArchive + ' - 文章归档 - 码神之路'
+        return this.currentArchive + ' - 文章归档 - 芝码小咚'
       },
       currentArchive (){
         if(this.article.query.year && this.article.query.month){

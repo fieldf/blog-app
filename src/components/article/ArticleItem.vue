@@ -3,10 +3,10 @@
     <div class="me-article-header">
 
       <a @click="view(id)" class="me-article-title">{{title}}</a>
-      <el-button v-if="weight > 0" class="me-article-icon" type="text">置顶</el-button>
-      <span class="me-pull-right me-article-count">
-	    	<i class="me-icon-comment"></i>&nbsp;{{commentCounts}}
-	    </span>
+      <el-button v-if="weight > 0" class="me-article-icon" type="info" plain>置顶</el-button>
+<!--      <span class="me-pull-right me-article-count">-->
+<!--	    	<i class="me-icon-comment"></i>&nbsp;{{commentCounts}}-->
+<!--	    </span>-->
       <span class="me-pull-right me-article-count">
 	    	<i class="el-icon-view"></i>&nbsp;{{viewCounts}}
 	    </span>
@@ -19,8 +19,8 @@
 	  	<span class="me-article-author">
 	    	<i class="me-icon-author"></i>&nbsp;{{author}}
 	    </span>
-
-      <el-tag v-for="t in tags" :key="t.tagName" size="mini" type="success">{{t.tagName}}</el-tag>
+      <el-button class="me-article-icon" type="info" plain @click="edit(id)" v-if="user.account=='芝码小咚'">编辑</el-button>
+      <el-tag v-for="t in tags" :key="t.tagName" size="mini" style="color: #B500FE;background-color: yellow">{{t.tagName}}</el-tag>
 
       <span class="me-pull-right me-article-count">
 	    	<i class="el-icon-time"></i>&nbsp;{{createDate | format}}
@@ -49,9 +49,20 @@
     data() {
       return {}
     },
+    computed: {
+      user() {
+        let account = this.$store.state.account
+        return {
+          account
+        }
+      }
+    },
     methods: {
       view(id) {
         this.$router.push({path: `/view/${id}`})
+      },
+      edit(id) {
+        this.$router.push({path: `/edit/${id}`})
       }
     }
   }

@@ -63,6 +63,15 @@ export function publishArticle(article,token) {
   })
 }
 
+export function editArticle(article,token) {
+  return request({
+    headers: {'Authorization': token},
+    url: '/articles/edit',
+    method: 'post',
+    data: article
+  })
+}
+
 export function listArchives() {
   return request({
     url: '/articles/listArchives',
