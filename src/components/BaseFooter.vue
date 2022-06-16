@@ -5,6 +5,9 @@
         <strong>
           <router-link to="/" class="me-login-design-color">芝码小咚</router-link>
         </strong>
+        <span style="margin: 0 15px">|</span>
+        <img src="/static/user/beian.png" alt="" class="beian">
+        <a rel="external nofollow noopener" href="https://beian.miit.gov.cn" target="_blank" style="color:forestgreen">京ICP备2022016396号-1</a>
       </p>
     </div>
   </el-footer>
